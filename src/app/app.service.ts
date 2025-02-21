@@ -15,6 +15,7 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
   login(loginData: { username: string, password: string }): Observable<any> {
+    console.log('Attempting to login with', loginData);
     return this.http.post(`${this.apiUrl}/Auth/token`, loginData);
   }
 

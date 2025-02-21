@@ -11,7 +11,7 @@
               <span *ngIf="editingField !== 'numurs'">{{ apartmentForm.get('numurs')?.value }}</span>
               <input *ngIf="editingField === 'numurs'" type="text" formControlName="numurs" class="form-control">
               <button type="button" *ngIf="editingField !== 'numurs'" class="btn btn-secondary float-right" (click)="startEditing('numurs')">Labot</button>
-              <button type="submit" *ngIf="editingField === 'numurs'" class="btn btn-primary float-right">Submit</button>
+              <button type="submit" *ngIf="editingField === 'numurs'" class="btn btn-primary float-right">Saglabāt</button>
             </td>
           </tr>
           <tr>
@@ -20,7 +20,7 @@
               <span *ngIf="editingField !== 'stavs'">{{ apartmentForm.get('stavs')?.value }}.</span>
               <input *ngIf="editingField === 'stavs'" type="text" formControlName="stavs" class="form-control">
               <button type="button" *ngIf="editingField !== 'stavs'" class="btn btn-secondary float-right" (click)="startEditing('stavs')">Labot</button>
-              <button type="submit" *ngIf="editingField === 'stavs'" class="btn btn-primary float-right">Submit</button>
+              <button type="submit" *ngIf="editingField === 'stavs'" class="btn btn-primary float-right">Saglabāt</button>
             </td>
           </tr>
           <tr>
@@ -29,7 +29,7 @@
               <span *ngIf="editingField !== 'istabu_skaits'">{{ apartmentForm.get('istabu_skaits')?.value }}</span>
               <input *ngIf="editingField === 'istabu_skaits'" type="text" formControlName="istabu_skaits" class="form-control">
               <button type="button" *ngIf="editingField !== 'istabu_skaits'" class="btn btn-secondary float-right" (click)="startEditing('istabu_skaits')">Labot</button>
-              <button type="submit" *ngIf="editingField === 'istabu_skaits'" class="btn btn-primary float-right">Submit</button>
+              <button type="submit" *ngIf="editingField === 'istabu_skaits'" class="btn btn-primary float-right">Saglabāt</button>
             </td>
           </tr>
           <tr>
@@ -120,7 +120,7 @@
               <span *ngIf="editingField !== 'pilna_platiba'">{{ apartmentForm.get('pilna_platiba')?.value }}m<sup>2</sup></span>
               <input *ngIf="editingField === 'pilna_platiba'" type="text" formControlName="pilna_platiba" class="form-control">
               <button type="button" *ngIf="editingField !== 'pilna_platiba'" class="btn btn-secondary float-right" (click)="startEditing('pilna_platiba')">Labot</button>
-              <button type="submit" *ngIf="editingField === 'pilna_platiba'" class="btn btn-primary float-right">Submit</button>
+              <button type="submit" *ngIf="editingField === 'pilna_platiba'" class="btn btn-primary float-right">Saglabāt</button>
             </td>
           </tr>
           <tr>
@@ -129,7 +129,7 @@
               <span *ngIf="editingField !== 'dzivojama_platiba'">{{ apartmentForm.get('dzivojama_platiba')?.value }}m<sup>2</sup></span>
               <input *ngIf="editingField === 'dzivojama_platiba'" type="text" formControlName="dzivojama_platiba" class="form-control">
               <button type="button" *ngIf="editingField !== 'dzivojama_platiba'" class="btn btn-secondary ml-2 float-right" (click)="startEditing('dzivojama_platiba')">Labot</button>
-              <button type="submit" *ngIf="editingField === 'dzivojama_platiba'" class="btn btn-primary ml-2 float-right">Submit</button>
+              <button type="submit" *ngIf="editingField === 'dzivojama_platiba'" class="btn btn-primary ml-2 float-right">Saglabāt</button>
             </td>
           </tr>
         </tbody>
