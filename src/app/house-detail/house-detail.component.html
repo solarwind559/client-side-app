@@ -1,0 +1,42 @@
+<p>house-detail works!</p>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Mājas Detaļas</h1>
+  <div *ngIf="house">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <th>Numurs</th>
+          <td>{{ house.numurs }}</td>
+        </tr>
+        <tr>
+          <th>Iela</th>
+          <td>{{ house.iela }}</td>
+        </tr>
+        <tr>
+          <th>Pilsēta</th>
+          <td>{{ house.pilseta }}</td>
+        </tr>
+        <tr>
+          <th>Valsts</th>
+          <td>{{ house.valsts }}</td>
+        </tr>
+        <tr>
+          <th>Dzīvokļi</th>
+          <td>
+            <div *ngFor="let dzivoklis of dzivokli">
+              <!-- #{{ dzivoklis.numurs }} -->
+              <a [routerLink]="['/apartment-detail', dzivoklis.id]">#{{ dzivoklis.numurs }}</a>
+            </div>
+
+
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+  <div *ngIf="!house">
+    <p>Nav datu ko parādīt...</p>
+  </div>
+</div>

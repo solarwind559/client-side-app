@@ -1,0 +1,142 @@
+<p>apartment-detail works!</p>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Dzīvokļu Detaļas</h1>
+  <div *ngIf="apartmentForm">
+    <form [formGroup]="apartmentForm" (ngSubmit)="onSubmit()">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>Dzīvokļa Numurs</th>
+            <td class="d-flex align-items-center justify-content-between">
+              <span *ngIf="editingField !== 'numurs'">{{ apartmentForm.get('numurs')?.value }}</span>
+              <input *ngIf="editingField === 'numurs'" type="text" formControlName="numurs" class="form-control">
+              <button type="button" *ngIf="editingField !== 'numurs'" class="btn btn-secondary float-right" (click)="startEditing('numurs')">Labot</button>
+              <button type="submit" *ngIf="editingField === 'numurs'" class="btn btn-primary float-right">Submit</button>
+            </td>
+          </tr>
+          <tr>
+            <th>Stāvs</th>
+            <td class="d-flex align-items-center justify-content-between">
+              <span *ngIf="editingField !== 'stavs'">{{ apartmentForm.get('stavs')?.value }}.</span>
+              <input *ngIf="editingField === 'stavs'" type="text" formControlName="stavs" class="form-control">
+              <button type="button" *ngIf="editingField !== 'stavs'" class="btn btn-secondary float-right" (click)="startEditing('stavs')">Labot</button>
+              <button type="submit" *ngIf="editingField === 'stavs'" class="btn btn-primary float-right">Submit</button>
+            </td>
+          </tr>
+          <tr>
+            <th>Istabu Skaits</th>
+            <td class="d-flex align-items-center justify-content-between">
+              <span *ngIf="editingField !== 'istabu_skaits'">{{ apartmentForm.get('istabu_skaits')?.value }}</span>
+              <input *ngIf="editingField === 'istabu_skaits'" type="text" formControlName="istabu_skaits" class="form-control">
+              <button type="button" *ngIf="editingField !== 'istabu_skaits'" class="btn btn-secondary float-right" (click)="startEditing('istabu_skaits')">Labot</button>
+              <button type="submit" *ngIf="editingField === 'istabu_skaits'" class="btn btn-primary float-right">Submit</button>
+            </td>
+          </tr>
+          <tr>
+            <th>Iedzīvotāju Skaits</th>
+            <td class="d-flex justify-content-between">
+              <p *ngIf="residents.length > 0">{{ residents.length }}</p>
+              <div *ngIf="residents.length > 0">
+                <span *ngFor="let resident of residents">
+                  <a title="Apskatīt un Labot" href="#" (click)="openModal($event, resident.id)">{{ resident.vards }} {{ resident.uzvards }} ({{ resident.is_Owner ? 'Īpašnieks' : 'Īrnieks' }})</a><br>
+                </span>
+              </div>
+              <p *ngIf="residents.length === 0">Nav iedzīvotāju.</p>
+            </td>
+
+            <!-- Bootstrap Modal -->
+            <ng-template #residentModal let-modal>
+              <div class="">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="residentModalLabel">Labot Iedzīvotāja Detaļas</h5>
+                    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div class="mb-3">
+                        <label for="residentVards" class="form-label">Vārds</label>
+                        <input type="text" class="form-control" id="residentVards" [(ngModel)]="selectedResident.vards" name="vards">
+                      </div>
+                      <div class="mb-3">
+                        <label for="residentUzvards" class="form-label">Uzvārds</label>
+                        <input type="text" class="form-control" id="residentUzvards" [(ngModel)]="selectedResident.uzvards" name="uzvards">
+                      </div>
+                      <div class="mb-3">
+                        <label for="residentPersonasKods" class="form-label">Personas Kods</label>
+                        <input type="text" class="form-control" id="residentPersonasKods" [(ngModel)]="selectedResident.personas_Kods" name="personas_Kods">
+                      </div>
+                      <div class="mb-3">
+                        <label for="residentDzimsanasDatums" class="form-label">Dzimšanas Datums</label>
+                        <input type="date" class="form-control" id="residentDzimsanasDatums" [(ngModel)]="selectedResident.dzimsanas_Datums" name="dzimsanas_Datums">
+                      </div>
+                      <div class="mb-3">
+                        <label for="residentTelefons" class="form-label">Telefons</label>
+                        <input type="text" class="form-control" id="residentTelefons" [(ngModel)]="selectedResident.telefons" name="telefons">
+                      </div>
+                      <div class="mb-3">
+                        <label for="residentEmail" class="form-label">E-mail</label>
+                        <input type="text" class="form-control" id="residentEmail" [(ngModel)]="selectedResident.e_Mail" name="e_Mail">
+                      </div>
+                      <!-- <div class="mb-3">
+                        <label for="residentSaikneArDzivokli" class="form-label">Saikne Ar Dzīvokli</label>
+                        <input type="text" class="form-control" id="residentSaikneArDzivokli" [(ngModel)]="selectedResident.saikne_Ar_Dzivokli" name="saikne_Ar_Dzivokli">
+                      </div> -->
+                      <!-- <div class="mb-3">
+                        <label for="residentIsOwner" class="form-label">Saikne Ar Dzīvokli</label>
+                        <input type="checkbox" class="form-check-input" id="residentIsOwner" [(ngModel)]="selectedResident.is_Owner" name="is_Owner">
+                      </div> -->
+                      <div class="mb-3">
+                        <label class="form-label">Saikne Ar Dzīvokli</label>
+                        <div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_Owner" id="isOwnerTrue" [(ngModel)]="selectedResident.is_Owner" [value]="true">
+                            <label class="form-check-label" for="isOwnerTrue">Īpašnieks</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="is_Owner" id="isOwnerFalse" [(ngModel)]="selectedResident.is_Owner" [value]="false">
+                            <label class="form-check-label" for="isOwnerFalse">Īrnieks</label>
+                          </div>
+                        </div>
+                      </div>
+
+                    </form>
+                  </div>
+                  <div class="alert alert-warning mx-3" role="alert">
+                    Pēc izmaiņu saglabāšanas, lūdzu atjauniniet lapu, lai redzētu izmaiņas datu bāzē
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('cancel click')">Aizvērt</button>
+                    <button type="button" class="btn btn-primary" (click)="saveChanges()">Saglabāt</button>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+
+          </tr>
+          <tr>
+            <th>Pilna Platība</th>
+            <td class="d-flex align-items-center justify-content-between">
+              <span *ngIf="editingField !== 'pilna_platiba'">{{ apartmentForm.get('pilna_platiba')?.value }}m<sup>2</sup></span>
+              <input *ngIf="editingField === 'pilna_platiba'" type="text" formControlName="pilna_platiba" class="form-control">
+              <button type="button" *ngIf="editingField !== 'pilna_platiba'" class="btn btn-secondary float-right" (click)="startEditing('pilna_platiba')">Labot</button>
+              <button type="submit" *ngIf="editingField === 'pilna_platiba'" class="btn btn-primary float-right">Submit</button>
+            </td>
+          </tr>
+          <tr>
+            <th>Dzīvojamā Platība</th>
+            <td class="d-flex align-items-center justify-content-between">
+              <span *ngIf="editingField !== 'dzivojama_platiba'">{{ apartmentForm.get('dzivojama_platiba')?.value }}m<sup>2</sup></span>
+              <input *ngIf="editingField === 'dzivojama_platiba'" type="text" formControlName="dzivojama_platiba" class="form-control">
+              <button type="button" *ngIf="editingField !== 'dzivojama_platiba'" class="btn btn-secondary ml-2 float-right" (click)="startEditing('dzivojama_platiba')">Labot</button>
+              <button type="submit" *ngIf="editingField === 'dzivojama_platiba'" class="btn btn-primary ml-2 float-right">Submit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+  <div *ngIf="!apartmentForm">
+    <p>Nav datu ko parādīt...</p>
+  </div>
+</div>

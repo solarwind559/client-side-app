@@ -1,0 +1,27 @@
+<p>all-houses works!</p>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Visas Mājas</h1>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Numurs</th>
+        <th>Iela</th>
+        <th>Pilsēta</th>
+        <th>Valsts</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let house of houses">
+        <td>{{ house.numurs }}</td>
+        <td>{{ house.iela }}</td>
+        <td>{{ house.pilseta }}</td>
+        <td>{{ house.valsts }}</td>
+        <td>
+          <a [routerLink]="['/house', house.id]">Apskatīt Detaļas</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
