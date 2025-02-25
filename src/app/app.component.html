@@ -1,5 +1,10 @@
 <main class="main">
   <div class="container">
+    <nav>
+      <button *ngIf="authService.loggedIn && router.url !== '/login'" (click)="logout()" class="btn btn-primary mt-3">
+        Logout
+      </button>
+    </nav>
   <router-outlet></router-outlet>
 </div>
 </main>

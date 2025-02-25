@@ -1,3 +1,51 @@
+### Project structure:
+```
+Base_Directory
+├── Backend
+│   ├── Api1
+│   │   ├── Controllers
+│   │   ├── program.cs
+│   │   ├── [..] other files and directories
+├── Frontend
+│   ├── client-side-app
+│   │   ├── src
+│   │   │   ├── app
+│   │   │   ├── index.html
+│   │   │   ├── [..] other files and directories
+│   │   ├── [..] other files and directories
+```
+#### Database must be connected
+##### For this purpose, I used SQLite database and packages
+
+### BackEnd
+Run in console and download all listed packages
+```
+dotnet list package
+```
+Run migrations in console 
+```
+Add-Migration InitialMigration -Context ApplicationDbContext
+Add-Migration InitialMigrationForIdentity -Context Api1.Models.IdentityDbContext
+Update-Database -Context ApplicationDbContext
+Update-Database -Context Api1.Models.IdentityDbContext
+```
+Start the app 
+
+### FrontEnd
+Run in console
+```
+npm install -g @angular/cli
+gh repo clone solarwind559/client-side-appnpm install bootstrap@5.1.0
+cd client-side-app
+npm install @ng-bootstrap/ng-bootstrap
+npm install @auth0/angular-jwt
+npm install jwt-decode
+npm install --save-dev @types/jwt-decode
+ng serve
+```
+
+OAuth2 is not complete. Role based authentification has been removed because of an error where 'The token you’re trying to decode may not be in the correct format', and I was not able to debug it and find the real cause.
+
 # ClientSideApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.

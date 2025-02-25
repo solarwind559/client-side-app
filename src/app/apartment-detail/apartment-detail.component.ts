@@ -1,4 +1,3 @@
-// import { Component } from '@angular/core';
 import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { AppService } from '../app.service';
@@ -14,34 +13,9 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
   templateUrl: './apartment-detail.component.html',
   styleUrl: './apartment-detail.component.css',
-  // selector: 'app-apartment-detail',
   standalone: true,
-  // imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
-  // templateUrl: './apartment-detail.component.html',
-  // styleUrls: ['./apartment-detail.component.css'],
 })
-// export class ApartmentDetailComponent {
 
-// }
-
-
-// import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-// import { ActivatedRoute, RouterModule } from '@angular/router';
-// import { AppService } from '../app.service';
-// import { Dzivoklis_DTO } from '../models/dzivoklis-dto.model';
-// import { Iedzivotajs_DTO } from '../models/iedzivotajs-dto.model';
-// import { CommonModule } from '@angular/common';
-// import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-// import { FormsModule } from '@angular/forms';
-
-// @Component({
-//   selector: 'app-apartment-detail',
-//   standalone: true,
-//   imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
-//   templateUrl: './apartment-detail.component.html',
-//   styleUrls: ['./apartment-detail.component.css'],
-// })
 export class ApartmentDetailComponent implements OnInit {
   apartment!: Dzivoklis_DTO;
   apartmentForm!: FormGroup;

@@ -4,19 +4,38 @@ import { Observable } from 'rxjs';
 import { Maja_DTO } from './models/maja-dto.model';
 import { Dzivoklis_DTO } from './models/dzivoklis-dto.model';
 import { Iedzivotajs_DTO } from './models/iedzivotajs-dto.model';
+import { tap } from 'rxjs/operators';
+import { jwtDecode } from 'jwt-decode';
 
+interface TokenResponse {
+  token: string;
+}
 @Injectable({
   providedIn: 'root'
 })
+
 export class AppService {
 
   private apiUrl = 'https://localhost:7271/api';
 
   constructor(private http: HttpClient) { }
 
-  login(loginData: { username: string, password: string }): Observable<any> {
+  login(loginData: { username: string, password: string }): Observable<TokenResponse> {
     console.log('Attempting to login with', loginData);
-    return this.http.post(`${this.apiUrl}/Auth/token`, loginData);
+    return this.http.post<TokenResponse>(`${this.apiUrl}/Auth/token`, loginData).pipe(
+      tap((response: TokenResponse) => {
+        localStorage.setItem('access_token', response.token);
+        console.log('Stored Token:', response.token);
+      })
+    );
+  }
+
+  public get loggedIn(): boolean {
+    return localStorage.getItem('access_token') !== null;
+  }
+
+  logout(): void {
+    localStorage.removeItem('access_token');
   }
 
   getAllHouses(): Observable<Maja_DTO[]> {

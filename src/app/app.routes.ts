@@ -3,6 +3,7 @@ import { AllHousesComponent } from './all-houses/all-houses.component';
 import { HouseDetailComponent } from './house-detail/house-detail.component';
 import { ApartmentDetailComponent } from  './apartment-detail/apartment-detail.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
 
@@ -28,6 +29,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard],
     title: 'Login page',
    },
   ];
