@@ -46,6 +46,13 @@ ng serve
 
 OAuth2 is not complete. Role based authentification has been removed because of an error where 'The token you’re trying to decode may not be in the correct format', and I was not able to debug it and find the real cause.
 
+![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164756.png>) 
+![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164822.png>) 
+![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164842.png>) 
+![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164908.png>) 
+![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164952.png>)
+
+
 # ClientSideApp
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.7.
