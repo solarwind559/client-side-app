@@ -46,10 +46,15 @@ ng serve
 
 OAuth2 is not complete. Role based authentification has been removed because of an error where 'The token you’re trying to decode may not be in the correct format', and I was not able to debug it and find the real cause.
 
+path: /login
 ![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164756.png>) 
+path: /app-all-houses
 ![Screenshot](<_screenshots/Ekrānuzņēmums 2025-02-25 170000.png>)
+path: /house/id
 ![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164842.png>) 
+path: /apartment-detail/id
 ![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164908.png>) 
+path: apartment-detail/id modal
 ![Screenshots](<_screenshots/Ekrānuzņēmums 2025-02-25 164952.png>)
 
 
